@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D509338929D715C700174238 /* APiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509338829D715C700174238 /* APiViewController.swift */; };
+		D509338B29D71A6300174238 /* ArrInfoByRouteAllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */; };
 		D5767FCC29D6DE6E00703116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCB29D6DE6E00703116 /* AppDelegate.swift */; };
 		D5767FCE29D6DE6E00703116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCD29D6DE6E00703116 /* SceneDelegate.swift */; };
 		D5767FD029D6DE6E00703116 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCF29D6DE6E00703116 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D509338829D715C700174238 /* APiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APiViewController.swift; sourceTree = "<group>"; };
+		D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrInfoByRouteAllData.swift; sourceTree = "<group>"; };
 		D5767FC829D6DE6E00703116 /* ArrivalNotiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArrivalNotiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5767FCB29D6DE6E00703116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5767FCD29D6DE6E00703116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				D5767FD429D6DE6F00703116 /* Assets.xcassets */,
 				D5767FD629D6DE6F00703116 /* LaunchScreen.storyboard */,
 				D5767FD929D6DE6F00703116 /* Info.plist */,
+				D509338829D715C700174238 /* APiViewController.swift */,
+				D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */,
 			);
 			path = ArrivalNotiApp;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5767FD029D6DE6E00703116 /* ViewController.swift in Sources */,
+				D509338B29D71A6300174238 /* ArrInfoByRouteAllData.swift in Sources */,
 				D5767FCC29D6DE6E00703116 /* AppDelegate.swift in Sources */,
 				D5767FCE29D6DE6E00703116 /* SceneDelegate.swift in Sources */,
+				D509338929D715C700174238 /* APiViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +445,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5MH57K7U7U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArrivalNotiApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -465,6 +474,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5MH57K7U7U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArrivalNotiApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
