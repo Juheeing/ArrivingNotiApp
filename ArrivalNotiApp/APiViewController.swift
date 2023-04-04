@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import Foundation
 
 class APiViewController: UIViewController {
 
-    let url : String = "your url"
+    
+    @IBOutlet weak var inputBusRouteId: UITextField!
+    
+    var url : String = "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=<your service key>&busRouteId="
     
     override func viewDidLoad() {
-        requestData()
+        
     }
     
-    func requestData() {
-        if let url = URL(string : url){
+    func requestData(_ id: String) {
+        if let url = URL(string : url.appending(id)){
             URLSession.shared.dataTask(with: url){ data, res, err in
                 if let data = data{
                     
@@ -31,6 +35,15 @@ class APiViewController: UIViewController {
         else{
             print("url is nil")
         }
+    }
+    
+    @IBAction func onActionCheck(_ sender: Any) {
+        if inputBusRouteId.text != nil {
+            requestData(inputBusRouteId.text ?? "")
+        } else {
+            
+        }
+        
     }
     
 }
