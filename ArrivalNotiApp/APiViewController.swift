@@ -17,30 +17,19 @@ class APiViewController: UIViewController, XMLParserDelegate {
     var tagType : ArrInfoByRouteAllData = .none
     var tempModel: item?
     var data: [item] = []
-    var parser = XMLParser()
-    var serviceKey : String = "PVresHk4JQAh2e0koYQZeh9Tn9cBniz%2Fyz1mxeswAcObiEcA6JmgTv67fz0f5YvNU%2FtVaSp9KL6JR89K5HSWrg%3D%3D&"
+    var serviceKey : String = "your service key"
     
     override func viewDidLoad() {
         
     }
     
     func requestData(_ id: String) {
-        let url = URL(string : "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=\(serviceKey)busRouteId=\(id)")!
-        let request=URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("dataTaskWithRequest error: \(error)")
-                return
-            }
-            guard let data = data else {
-                print("dataTaskWithRequest data is nil")
-                return
-            }
-            let parser = XMLParser(contentsOf: url)!
-            parser.delegate = self
-            parser.parse()
-        }
-        task.resume()
+        var parser : XMLParser
+        var url = URL(string : "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=\(serviceKey)busRouteId=\(id)")
+        parser = XMLParser(contentsOf: url!)!
+        parser.delegate = self
+        parser.parse()
+
     }
     
     // 태그 시작
