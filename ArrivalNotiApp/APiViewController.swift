@@ -17,19 +17,30 @@ class APiViewController: UIViewController, XMLParserDelegate {
     var tagType : ArrInfoByRouteAllData = .none
     var tempModel: item?
     var data: [item] = []
-    
-    var serviceKey : String = "your service key"
+    var parser = XMLParser()
+    var serviceKey : String = "PVresHk4JQAh2e0koYQZeh9Tn9cBniz%2Fyz1mxeswAcObiEcA6JmgTv67fz0f5YvNU%2FtVaSp9KL6JR89K5HSWrg%3D%3D&"
     
     override func viewDidLoad() {
         
     }
     
     func requestData(_ id: String) {
-        var parser : XMLParser
-        var url = URL(string : "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=\(serviceKey)busRouteId=\(id)")
-        parser = XMLParser(contentsOf: url!)!
-        parser.delegate = self
-        parser.parse()
+        let url = URL(string : "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=\(serviceKey)busRouteId=\(id)")!
+        let request=URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("dataTaskWithRequest error: \(error)")
+                return
+            }
+            guard let data = data else {
+                print("dataTaskWithRequest data is nil")
+                return
+            }
+            let parser = XMLParser(contentsOf: url)!
+            parser.delegate = self
+            parser.parse()
+        }
+        task.resume()
     }
     
     // 태그 시작
@@ -213,17 +224,202 @@ class APiViewController: UIViewController, XMLParserDelegate {
     
     // 태그 끝
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-            
+        if elementName == "item" {
+            guard let tempModel = tempModel else {
+                return
+            }
+            data.append(tempModel)
+            isLock = false
+        } else {
+            print("----- didEndElement (else)-----")
         }
+    }
     
     // 태그 안의 내용
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
+        let parseString = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if isLock {
+            switch tagType {
+            case .arrmsg1:
+                tempModel?.arrmsg1 = parseString
+            case .arrmsg2:
+                tempModel?.arrmsg2 = parseString
+            case .arsId:
+                tempModel?.arsId = parseString
+            case .avgCf1:
+                tempModel?.avgCf1 = parseString
+            case .avgCf2:
+                tempModel?.avgCf2 = parseString
+            case .brdrde_Num1:
+                tempModel?.brdrde_Num1 = parseString
+            case .brdrde_Num2:
+                tempModel?.brdrde_Num2 = parseString
+            case .brerde_Div1:
+                tempModel?.brerde_Div1 = parseString
+            case .brerde_Div2:
+                tempModel?.brerde_Div2 = parseString
+            case .busRouteAbrv:
+                tempModel?.busRouteAbrv = parseString
+            case .busRouteId:
+                tempModel?.busRouteId = parseString
+            case .busType1:
+                tempModel?.busType1 = parseString
+            case .busType2:
+                tempModel?.busType2 = parseString
+            case .deTourAt:
+                tempModel?.deTourAt = parseString
+            case .dir:
+                tempModel?.dir = parseString
+            case .expCf1:
+                tempModel?.expCf1 = parseString
+            case .expCf2:
+                tempModel?.expCf2 = parseString
+            case .exps1:
+                tempModel?.exps1 = parseString
+            case .exps2:
+                tempModel?.exps2 = parseString
+            case .firstTm:
+                tempModel?.firstTm = parseString
+            case .full1:
+                tempModel?.full1 = parseString
+            case .full2:
+                tempModel?.full2 = parseString
+            case .goal1:
+                tempModel?.goal1 = parseString
+            case .goal2:
+                tempModel?.goal2 = parseString
+            case .isArrive1:
+                tempModel?.isArrive1 = parseString
+            case .isArrive2:
+                tempModel?.isArrive2 = parseString
+            case .isLast1:
+                tempModel?.isLast1 = parseString
+            case .isLast2:
+                tempModel?.isLast2 = parseString
+            case .kalCf1:
+                tempModel?.kalCf1 = parseString
+            case .kalCf2:
+                tempModel?.kalCf2 = parseString
+            case .kals1:
+                tempModel?.kals1 = parseString
+            case .kals2:
+                tempModel?.kals2 = parseString
+            case .lastTm:
+                tempModel?.lastTm = parseString
+            case .mkTm:
+                tempModel?.mkTm = parseString
+            case .namin2Sec1:
+                tempModel?.namin2Sec1 = parseString
+            case .namin2Sec2:
+                tempModel?.namin2Sec2 = parseString
+            case .neuCf1:
+                tempModel?.neuCf1 = parseString
+            case .neuCf2:
+                tempModel?.neuCf2 = parseString
+            case .neus1:
+                tempModel?.neus1 = parseString
+            case .neus2:
+                tempModel?.neus2 = parseString
+            case .nextBus:
+                tempModel?.nextBus = parseString
+            case .nmain2Ord1:
+                tempModel?.nmain2Ord1 = parseString
+            case .nmain2Ord2:
+                tempModel?.nmain2Ord2 = parseString
+            case .nmain2Stnid1:
+                tempModel?.nmain2Stnid1 = parseString
+            case .nmain2Stnid2:
+                tempModel?.nmain2Stnid2 = parseString
+            case .nmain3Ord1:
+                tempModel?.nmain3Ord1 = parseString
+            case .nmain3Ord2:
+                tempModel?.nmain3Ord2 = parseString
+            case .nmain3Sec1:
+                tempModel?.nmain3Sec1 = parseString
+            case .nmain3Sec2:
+                tempModel?.nmain3Sec2 = parseString
+            case .nmain3Stnid1:
+                tempModel?.nmain3Stnid1 = parseString
+            case .nmain3Stnid2:
+                tempModel?.nmain3Stnid2 = parseString
+            case .nmainOrd1:
+                tempModel?.nmainOrd1 = parseString
+            case .nmainOrd2:
+                tempModel?.nmainOrd2 = parseString
+            case .nmainSec1:
+                tempModel?.nmainSec1 = parseString
+            case .nmainSec2:
+                tempModel?.nmainSec2 = parseString
+            case .nmainStnid1:
+                tempModel?.nmainStnid1 = parseString
+            case .nmainStnid2:
+                tempModel?.nmainStnid2 = parseString
+            case .nstnId1:
+                tempModel?.nstnId1 = parseString
+            case .nstnId2:
+                tempModel?.nstnId2 = parseString
+            case .nstnOrd1:
+                tempModel?.nstnOrd1 = parseString
+            case .nstnOrd2:
+                tempModel?.nstnOrd2 = parseString
+            case .nstnSec1:
+                tempModel?.nstnSec1 = parseString
+            case .nstnSec2:
+                tempModel?.nstnSec2 = parseString
+            case .nstnSpd1:
+                tempModel?.nstnSpd1 = parseString
+            case .nstnSpd2:
+                tempModel?.nstnSpd2 = parseString
+            case .plainNo1:
+                tempModel?.plainNo1 = parseString
+            case .plainNo2:
+                tempModel?.plainNo2 = parseString
+            case .rerdie_Div1:
+                tempModel?.rerdie_Div1 = parseString
+            case .rerdie_Div2:
+                tempModel?.rerdie_Div2 = parseString
+            case .reride_Num1:
+                tempModel?.reride_Num1 = parseString
+            case .reride_Num2:
+                tempModel?.reride_Num2 = parseString
+            case .routeType:
+                tempModel?.routeType = parseString
+            case .rtNm:
+                tempModel?.rtNm = parseString
+            case .sectOrd1:
+                tempModel?.sectOrd1 = parseString
+            case .sectOrd2:
+                tempModel?.sectOrd2 = parseString
+            case .stId:
+                tempModel?.stId = parseString
+            case .stNm:
+                tempModel?.stNm = parseString
+            case .staOrd:
+                tempModel?.staOrd = parseString
+            case .term:
+                tempModel?.term = parseString
+            case .traSpd1:
+                tempModel?.traSpd1 = parseString
+            case .traSpd2:
+                tempModel?.traSpd2 = parseString
+            case .traTime1:
+                tempModel?.traTime1 = parseString
+            case .traTime2:
+                tempModel?.traTime2 = parseString
+            case .vehId1:
+                tempModel?.vehId1 = parseString
+            case .vehId2:
+                tempModel?.vehId2 = parseString
+            case .none:
+                break
+            }
+        }
     }
     
     @IBAction func onActionCheck(_ sender: Any) {
         if inputBusRouteId.text != nil {
-            requestData(inputBusRouteId.text ?? "")
+            self.requestData(self.inputBusRouteId.text ?? "")
+            
         } else {
             
         }
