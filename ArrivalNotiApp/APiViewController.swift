@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class APiViewController: UIViewController, XMLParserDelegate {
+class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegate {
 
     
     @IBOutlet weak var inputBusRouteId: UITextField!
@@ -20,13 +20,17 @@ class APiViewController: UIViewController, XMLParserDelegate {
     var serviceKey : String = "your service key"
     
     override func viewDidLoad() {
-        
+        inputBusRouteId.delegate = self
+        inputBusRouteId.addDoneButtonToKeyboard(myAction:  #selector(self.inputBusRouteId.resignFirstResponder))
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
     }
     
     func requestData(_ id: String) {
-        var parser : XMLParser
-        var url = URL(string : "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=\(serviceKey)busRouteId=\(id)")
-        parser = XMLParser(contentsOf: url!)!
+        let url = URL(string : "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=\(serviceKey)busRouteId=\(id)")
+        let parser = XMLParser(contentsOf: url!)!
         parser.delegate = self
         parser.parse()
 
@@ -403,6 +407,7 @@ class APiViewController: UIViewController, XMLParserDelegate {
                 break
             }
         }
+        print(parseString)
     }
     
     @IBAction func onActionCheck(_ sender: Any) {
@@ -416,3 +421,4 @@ class APiViewController: UIViewController, XMLParserDelegate {
     }
     
 }
+

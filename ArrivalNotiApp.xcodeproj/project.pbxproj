@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D509338929D715C700174238 /* APiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509338829D715C700174238 /* APiViewController.swift */; };
 		D509338B29D71A6300174238 /* ArrInfoByRouteAllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */; };
+		D524465029E4482900FEA8B9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524464F29E4482900FEA8B9 /* Extension.swift */; };
 		D5767FCC29D6DE6E00703116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCB29D6DE6E00703116 /* AppDelegate.swift */; };
 		D5767FCE29D6DE6E00703116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCD29D6DE6E00703116 /* SceneDelegate.swift */; };
 		D5767FD029D6DE6E00703116 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCF29D6DE6E00703116 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		D509338829D715C700174238 /* APiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APiViewController.swift; sourceTree = "<group>"; };
 		D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrInfoByRouteAllData.swift; sourceTree = "<group>"; };
+		D524464F29E4482900FEA8B9 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D5767FC829D6DE6E00703116 /* ArrivalNotiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArrivalNotiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5767FCB29D6DE6E00703116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5767FCD29D6DE6E00703116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				D5767FD929D6DE6F00703116 /* Info.plist */,
 				D509338829D715C700174238 /* APiViewController.swift */,
 				D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */,
+				D524464F29E4482900FEA8B9 /* Extension.swift */,
 			);
 			path = ArrivalNotiApp;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				D5767FD029D6DE6E00703116 /* ViewController.swift in Sources */,
 				D509338B29D71A6300174238 /* ArrInfoByRouteAllData.swift in Sources */,
 				D5767FCC29D6DE6E00703116 /* AppDelegate.swift in Sources */,
+				D524465029E4482900FEA8B9 /* Extension.swift in Sources */,
 				D5767FCE29D6DE6E00703116 /* SceneDelegate.swift in Sources */,
 				D509338929D715C700174238 /* APiViewController.swift in Sources */,
 			);
