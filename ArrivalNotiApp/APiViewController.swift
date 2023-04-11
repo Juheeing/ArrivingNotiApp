@@ -12,6 +12,7 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
 
     
     @IBOutlet weak var inputBusRouteId: UITextField!
+    @IBOutlet weak var dataTextView: UITextView!
     
     var isLock = true
     var tagType : ArrInfoByRouteAllData = .none
@@ -19,7 +20,21 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
     var data: [item] = []
     var serviceKey : String = "your service key"
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardUp), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDown), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
         inputBusRouteId.delegate = self
         inputBusRouteId.addDoneButtonToKeyboard(myAction:  #selector(self.inputBusRouteId.resignFirstResponder))
     }
@@ -28,12 +43,28 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
           self.view.endEditing(true)
     }
     
+    @objc func keyboardUp(notification:NSNotification) {
+        if let keyboardFrame:NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+           let keyboardRectangle = keyboardFrame.cgRectValue
+       
+            UIView.animate(
+                withDuration: 0.3
+                , animations: {
+                    self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardRectangle.height)
+                }
+            )
+        }
+    }
+    
+    @objc func keyboardDown() {
+        self.view.transform = .identity
+    }
+    
     func requestData(_ id: String) {
         let url = URL(string : "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRouteAll?ServiceKey=\(serviceKey)busRouteId=\(id)")
         let parser = XMLParser(contentsOf: url!)!
         parser.delegate = self
         parser.parse()
-
     }
     
     // 태그 시작

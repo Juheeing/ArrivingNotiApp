@@ -48,16 +48,28 @@
                                     <constraint firstAttribute="height" constant="35" id="fHp-EJ-3U5"/>
                                 </constraints>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KC4-mQ-bbo">
+                                <rect key="frame" x="20" y="40" width="280" height="433"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="KC4-mQ-bbo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="N2Z-wu-UPm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VcE-GY-DF6" secondAttribute="trailing" constant="35" id="VRK-0Z-daH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KC4-mQ-bbo" secondAttribute="trailing" constant="20" id="VWm-cL-p5N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VcE-GY-DF6" secondAttribute="bottom" constant="40" id="eMR-19-iwD"/>
+                            <constraint firstItem="KC4-mQ-bbo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="oiM-wj-96h"/>
                             <constraint firstItem="VcE-GY-DF6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="sX9-R3-vnF"/>
+                            <constraint firstItem="VcE-GY-DF6" firstAttribute="top" secondItem="KC4-mQ-bbo" secondAttribute="bottom" constant="20" id="uqT-aZ-j1M"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dataTextView" destination="KC4-mQ-bbo" id="ftB-se-RQ1"/>
                         <outlet property="inputBusRouteId" destination="gCO-Wq-HPn" id="aRn-uo-xCg"/>
                     </connections>
                 </viewController>
@@ -67,6 +79,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
