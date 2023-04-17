@@ -19,12 +19,12 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
     var tempModel: item?
     var data: [item] = []
     var serviceKey : String = "your service key"
+    var id:[[String]] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardUp), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDown), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,6 +58,29 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
     
     @objc func keyboardDown() {
         self.view.transform = .identity
+    }
+    
+    private func parseCSVAt(url:URL) {
+        do {
+            
+            let data = try Data(contentsOf: url)
+            let dataEncoded = String(data: data, encoding: .utf8)
+            
+            if let dataArr = dataEncoded?.components(separatedBy: "\n").map({$0.components(separatedBy: ",")}) {
+                
+                for item in dataArr {
+                    id.append(item)
+                }
+            }
+            
+        } catch  {
+            print("Error reading CSV file")
+        }
+    }
+    
+   func loadLocationsFromCSV() {
+        let path = Bundle.main.path(forResource: "location", ofType: "csv")!
+        parseCSVAt(url: URL(fileURLWithPath: path))
     }
     
     func requestData(_ id: String) {
