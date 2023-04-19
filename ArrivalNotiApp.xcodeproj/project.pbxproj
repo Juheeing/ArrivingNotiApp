@@ -10,6 +10,7 @@
 		D509338929D715C700174238 /* APiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509338829D715C700174238 /* APiViewController.swift */; };
 		D509338B29D71A6300174238 /* ArrInfoByRouteAllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */; };
 		D524465029E4482900FEA8B9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524464F29E4482900FEA8B9 /* Extension.swift */; };
+		D524466129F00E7C00FEA8B9 /* BusRouteIdData.csv in Resources */ = {isa = PBXBuildFile; fileRef = D524466029F00E7C00FEA8B9 /* BusRouteIdData.csv */; };
 		D5767FCC29D6DE6E00703116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCB29D6DE6E00703116 /* AppDelegate.swift */; };
 		D5767FCE29D6DE6E00703116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCD29D6DE6E00703116 /* SceneDelegate.swift */; };
 		D5767FD029D6DE6E00703116 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5767FCF29D6DE6E00703116 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		D509338829D715C700174238 /* APiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APiViewController.swift; sourceTree = "<group>"; };
 		D509338A29D71A6300174238 /* ArrInfoByRouteAllData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrInfoByRouteAllData.swift; sourceTree = "<group>"; };
 		D524464F29E4482900FEA8B9 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		D524466029F00E7C00FEA8B9 /* BusRouteIdData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BusRouteIdData.csv; path = ../../../../Downloads/BusRouteIdData.csv; sourceTree = "<group>"; };
 		D5767FC829D6DE6E00703116 /* ArrivalNotiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArrivalNotiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5767FCB29D6DE6E00703116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5767FCD29D6DE6E00703116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		D5767FCA29D6DE6E00703116 /* ArrivalNotiApp */ = {
 			isa = PBXGroup;
 			children = (
+				D524466029F00E7C00FEA8B9 /* BusRouteIdData.csv */,
 				D5767FCB29D6DE6E00703116 /* AppDelegate.swift */,
 				D5767FCD29D6DE6E00703116 /* SceneDelegate.swift */,
 				D5767FCF29D6DE6E00703116 /* ViewController.swift */,
@@ -240,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D524466129F00E7C00FEA8B9 /* BusRouteIdData.csv in Resources */,
 				D5767FD829D6DE6F00703116 /* LaunchScreen.storyboard in Resources */,
 				D5767FD529D6DE6F00703116 /* Assets.xcassets in Resources */,
 				D5767FD329D6DE6E00703116 /* Main.storyboard in Resources */,

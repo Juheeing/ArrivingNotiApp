@@ -27,7 +27,7 @@
                                             <constraint firstAttribute="width" constant="175" id="sgC-kE-LqT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="wanryoAccesory" value="YES"/>
                                         </userDefinedRuntimeAttributes>

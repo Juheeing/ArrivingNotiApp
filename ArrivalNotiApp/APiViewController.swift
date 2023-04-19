@@ -20,11 +20,13 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
     var data: [item] = []
     var serviceKey : String = "your service key"
     var id:[[String]] = []
+    var dic = [String: String]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardUp), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDown), name: UIResponder.keyboardWillHideNotification, object: nil)
+        loadLocationsFromCSV()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,11 +38,6 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         inputBusRouteId.delegate = self
-        inputBusRouteId.addDoneButtonToKeyboard(myAction:  #selector(self.inputBusRouteId.resignFirstResponder))
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-          self.view.endEditing(true)
     }
     
     @objc func keyboardUp(notification:NSNotification) {
@@ -66,11 +63,12 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
             let data = try Data(contentsOf: url)
             let dataEncoded = String(data: data, encoding: .utf8)
             
-            if let dataArr = dataEncoded?.components(separatedBy: "\n").map({$0.components(separatedBy: ",")}) {
+            if let dataArr = dataEncoded?.components(separatedBy: "\r\n").map({$0.components(separatedBy: ",")}) {
                 
-                for item in dataArr {
-                    id.append(item)
+                for row in dataArr {
+                    dic[row[0]] = row[1]
                 }
+                print(dic)
             }
             
         } catch  {
@@ -79,7 +77,7 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
     }
     
    func loadLocationsFromCSV() {
-        let path = Bundle.main.path(forResource: "location", ofType: "csv")!
+        let path = Bundle.main.path(forResource: "BusRouteIdData", ofType: "csv")!
         parseCSVAt(url: URL(fileURLWithPath: path))
     }
     
@@ -88,6 +86,7 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
         let parser = XMLParser(contentsOf: url!)!
         parser.delegate = self
         parser.parse()
+        dataTextView.text = id
     }
     
     // 태그 시작
@@ -462,11 +461,13 @@ class APiViewController: UIViewController, XMLParserDelegate, UITextFieldDelegat
             }
         }
         print(parseString)
+
     }
     
     @IBAction func onActionCheck(_ sender: Any) {
+        view.endEditing(true)
         if inputBusRouteId.text != nil {
-            self.requestData(self.inputBusRouteId.text ?? "")
+            self.requestData(dic[self.inputBusRouteId.text!] ?? "")
             
         } else {
             
